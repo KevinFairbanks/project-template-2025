@@ -99,7 +99,7 @@ PRODUCTION_URL
 
 # Push initial code
 git remote add origin <your-repo-url>
-git push -u origin master
+git push -u origin main
 ```
 
 ### 4. Coolify Deployment
@@ -144,7 +144,7 @@ git push -u origin master
 
 5. **Production deployment**
    ```bash
-   # Merge dev to master (with approval)
+   # Merge dev to main (with approval)
    # Automatic production deployment with health checks
    ```
 

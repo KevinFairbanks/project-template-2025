@@ -25,7 +25,7 @@
 - Use environment variables for configuration
 
 ## Git Workflow
-- Never commit directly to master branch
+- Never commit directly to main branch
 - Create feature branches from dev
 - Auto-deploy dev branch to staging
 - Manual approval required for production

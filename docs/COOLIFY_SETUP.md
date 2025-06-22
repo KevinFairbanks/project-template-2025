@@ -12,7 +12,7 @@ This guide covers setting up Coolify for deployment and integrating it with our 
 ```yaml
 Name: your-project-name
 Repository: https://github.com/your-username/your-repo
-Branch: master (for production) / dev (for staging)
+Branch: main (for production) / dev (for staging)
 Build Command: docker build --target production -t $IMAGE_NAME .
 Start Command: npm start
 Port: 3000
@@ -105,7 +105,7 @@ Our CI/CD workflow (`.github/workflows/ci.yml`) is already configured to:
 ```yaml
 # Coolify watches repository directly
 Auto-deploy: Enabled
-Branch: master (production) / dev (staging)
+Branch: main (production) / dev (staging)
 Build on push: Enabled
 ```
 
@@ -342,8 +342,8 @@ Code Backups:
 1. **Develop locally** with Docker Compose
 2. **Push to dev branch** → auto-deploy to staging
 3. **Test on staging** environment
-4. **Create PR** to master branch
-5. **Merge to master** → deploy to production (with approval)
+4. **Create PR** to main branch
+5. **Merge to main** → deploy to production (with approval)
 
 ### Monitoring
 - **Set up alerts** for deployment failures

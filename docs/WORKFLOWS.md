@@ -9,8 +9,8 @@ This project uses GitHub Actions for automated CI/CD workflows. Here's a compreh
 ### 1. CI/CD Pipeline (`.github/workflows/ci.yml`)
 
 **Triggers:**
-- Push to `dev` or `master` branches
-- Pull requests to `dev` or `master` branches
+- Push to `dev` or `main` branches
+- Pull requests to `dev` or `main` branches
 
 **Stages:**
 
@@ -69,7 +69,7 @@ Health Check: /health endpoint
 Notifications: Optional Slack integration
 ```
 
-#### Stage 4b: Production Deployment (master branch only)
+#### Stage 4b: Production Deployment (main branch only)
 ```yaml
 Trigger: Manual approval required
 Method: Coolify webhook
@@ -80,7 +80,7 @@ Post-Deploy: Extended health checks + release creation
 ### 2. Contributors Update (`.github/workflows/contributors.yml`)
 
 **Triggers:**
-- Push to master branch
+- Push to main branch
 - Weekly schedule (Sundays)
 - Manual trigger
 
@@ -172,7 +172,7 @@ Post-Deploy: Extended health checks + release creation
 5. Use Coolify's built-in deployment watching
 
 # Branch strategy for solo:
-master (production) ← dev (staging) ← feature branches
+main (production) ← dev (staging) ← feature branches
 ```
 
 **Documentation Notes:**

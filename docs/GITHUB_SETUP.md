@@ -50,7 +50,7 @@ SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/..."  # If re-enabling Slac
 3. Add protection rules:
    - Required reviewers: Add yourself
    - Wait timer: 0 minutes (for solo dev)
-   - Deployment branches: Only `master`
+   - Deployment branches: Only `main`
 
 **Benefits for Solo Dev:**
 - Manual approval step before production
@@ -61,7 +61,7 @@ SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/..."  # If re-enabling Slac
 
 **Recommended for Quality:**
 1. Go to repository → Settings → Branches
-2. Add rule for `master` branch:
+2. Add rule for `main` branch:
    - ✅ Require status checks to pass
    - ✅ Require branches to be up to date
    - ✅ Status checks: `quality-checks`, `build-and-package`
@@ -107,7 +107,7 @@ SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/..."  # If re-enabling Slac
 - Health check validation
 - Rollback on failure
 
-# Production (master branch):
+# Production (main branch):
 - Manual approval required (if environment protection enabled)
 - Extended health checks
 - Automatic release creation with changelog
@@ -118,7 +118,7 @@ SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/..."  # If re-enabling Slac
 ### Option 1: GitHub + Coolify Hybrid (Recommended)
 ```yaml
 Flow:
-1. Developer pushes to dev/master
+1. Developer pushes to dev/main
 2. GitHub runs quality checks + builds images
 3. GitHub triggers Coolify webhook on success
 4. Coolify deploys using pre-built image

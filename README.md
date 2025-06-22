@@ -54,7 +54,7 @@ project-root/
 ## 🔧 Development Workflow
 
 ### Branch Strategy
-- **`master`**: Production-ready code (protected, no direct commits after initial setup)
+- **`main`**: Production-ready code (protected, no direct commits after initial setup)
 - **`dev`**: Development integration branch (auto-deploys to staging)
 - **`feature/*`**: New features (`feature/user-authentication`)
 - **`fix/*`**: Bug fixes (`fix/login-error`)
@@ -80,7 +80,7 @@ Use semantic prefixes for all commits:
 5. Create PR to `dev` branch
 6. After review and merge, delete feature branch
 7. Changes auto-deploy to staging from `dev`
-8. When ready for production, merge `dev` to `master`
+8. When ready for production, merge `dev` to `main`
 
 ## 🐳 Docker Setup
 
@@ -132,7 +132,7 @@ See [CHANGELOG.md](CHANGELOG.md) for version history and changes.
 ## 🚀 Deployment
 
 - **Staging**: Auto-deploys from `dev` branch
-- **Production**: Manual deployment from `master` branch
+- **Production**: Manual deployment from `main` branch
 - **Platform**: Coolify-managed server with Docker
 
 See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instructions.
@@ -155,4 +155,4 @@ This project includes standardized Cursor AI rules in `.cursor/rules/project-rul
 
 ---
 
-**Note**: This is a template repository. Update this README with project-specific information after creating your new project. 
+**Note**: This is a template repository. Update this README with project-specific information after creating your new project.

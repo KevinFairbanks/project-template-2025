@@ -1,11 +1,6 @@
 ---
 description: Advanced AI rules for code quality, workflow optimization, and intelligent development assistance
 globs:
-  - "**/*.js"
-  - "**/*.ts"
-  - "**/*.jsx"
-  - "**/*.tsx"
-  - "**/*.md"
 alwaysApply: true
 ---
 # Advanced Cursor AI Rules
@@ -152,7 +147,7 @@ alwaysApply: true
 ## 🚨 Error Prevention
 
 ### Common Mistake Prevention
-- **Prevent direct commits** to master branch
+- **Prevent direct commits** to main branch
 - **Validate commit message** format before committing
 - **Check for sensitive data** before commits
 - **Ensure tests pass** before allowing pushes
