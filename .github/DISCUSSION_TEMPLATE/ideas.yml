@@ -1,0 +1,44 @@
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing your idea! We love hearing from the community.
+
+  - type: textarea
+    id: idea-description
+    attributes:
+      label: "💡 Idea Description"
+      description: "Describe your idea in detail"
+      placeholder: "Tell us about your idea..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: "🎯 Use Case"
+      description: "What problem does this solve or what value does it add?"
+      placeholder: "Describe the use case..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "🔧 Implementation Ideas"
+      description: "Do you have any thoughts on how this could be implemented?"
+      placeholder: "Share your implementation thoughts..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: "📋 Checklist"
+      description: "Please confirm the following:"
+      options:
+        - label: "I have searched existing discussions to make sure this idea hasn't been proposed before"
+          required: true
+        - label: "I understand this is a discussion and not a formal feature request"
+          required: true

@@ -1,0 +1,80 @@
+name: 'Deploy to Coolify'
+description: 'Deploy application to Coolify server'
+inputs:
+  webhook-url:
+    description: 'Coolify webhook URL'
+    required: true
+  environment:
+    description: 'Deployment environment (staging/production)'
+    required: true
+    default: 'staging'
+  timeout:
+    description: 'Deployment timeout in seconds'
+    required: false
+    default: '300'
+
+outputs:
+  url:
+    description: 'Deployed application URL'
+    value: ${{ steps.deploy.outputs.url }}
+  status:
+    description: 'Deployment status'
+    value: ${{ steps.deploy.outputs.status }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Trigger Coolify deployment
+      id: deploy
+      shell: bash
+      run: |
+        echo "🚀 Deploying to ${{ inputs.environment }}..."
+
+        # Trigger deployment webhook
+        response=$(curl -s -w "%{http_code}" -X POST "${{ inputs.webhook-url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "branch": "'${{ github.ref_name }}'",
+            "commit": "'${{ github.sha }}'",
+            "environment": "'${{ inputs.environment }}'",
+            "message": "'${{ github.event.head_commit.message }}'"
+          }')
+
+        http_code="${response: -3}"
+
+        if [ "$http_code" -eq 200 ] || [ "$http_code" -eq 201 ]; then
+          echo "✅ Deployment webhook triggered successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "❌ Deployment webhook failed with status: $http_code"
+          echo "status=failed" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+
+        # Set environment-specific URL
+        if [ "${{ inputs.environment }}" = "staging" ]; then
+          echo "url=${{ env.STAGING_URL }}" >> $GITHUB_OUTPUT
+        else
+          echo "url=${{ env.PRODUCTION_URL }}" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Wait for deployment
+      shell: bash
+      run: |
+        echo "⏳ Waiting for deployment to complete..."
+        timeout=${{ inputs.timeout }}
+        elapsed=0
+
+        while [ $elapsed -lt $timeout ]; do
+          if curl -sf "${{ steps.deploy.outputs.url }}/health" > /dev/null 2>&1; then
+            echo "✅ Application is healthy!"
+            exit 0
+          fi
+
+          echo "Waiting... ($elapsed/$timeout seconds)"
+          sleep 10
+          elapsed=$((elapsed + 10))
+        done
+
+        echo "❌ Deployment timed out after $timeout seconds"
+        exit 1

@@ -1,0 +1,166 @@
+# Project Rules for Cursor AI
+
+These rules define the standards and workflows for this project. Follow these guidelines for all development work.
+
+## 🌳 Git Workflow Rules
+
+### Branch Management
+- **NEVER commit or push directly to `master` branch after initial setup**
+- Always work from `dev` branch as the base for new features
+- Create feature branches with semantic prefixes:
+  - `feature/` - New features
+  - `fix/` - Bug fixes
+  - `docs/` - Documentation updates
+  - `refactor/` - Code refactoring
+  - `test/` - Test updates
+  - `chore/` - Maintenance tasks
+
+### Commit Message Standards
+- **ALWAYS use semantic prefixes** in commit messages:
+  - `feat:` - New features
+  - `fix:` - Bug fixes
+  - `docs:` - Documentation changes
+  - `refactor:` - Code refactoring
+  - `test:` - Test updates
+  - `chore:` - Maintenance tasks
+- Keep commit messages short and meaningful
+- Example: `feat: add user authentication system`
+- Expanded details go in CHANGELOG.md, not commit messages
+
+### Before Any Commit
+1. **Ask for permission** before committing or pushing changes
+2. **Update CHANGELOG.md** with changes made
+3. **Update TASKS.md** with task progress
+4. **Test code thoroughly** before committing
+5. **Verify you're in the correct directory** - check for multiple repos
+
+## 📁 Directory Awareness
+
+### Always Verify Location
+- **Before any git operation**, confirm you're in the correct project directory
+- Some projects may have multiple repositories
+- Use `pwd` and `git status` to verify location
+- Ask user to confirm if unsure about repository context
+
+## 🚀 Development Workflow
+
+### Testing Requirements
+- **Always test code** before committing
+- Most projects don't have local server setup
+- **Use staging site** for testing when needed
+- Staging auto-deploys from `dev` branch
+- Mention if staging testing is recommended
+
+### Branch Lifecycle
+1. Create feature branch from `dev`
+2. Work on feature with regular commits
+3. Update documentation (CHANGELOG.md, TASKS.md)
+4. Test changes (locally or on staging)
+5. Create PR to merge into `dev`
+6. **Delete feature branch** after successful merge
+7. Changes auto-deploy to staging from `dev`
+8. When ready, merge `dev` to `master` for production
+
+## 📋 Documentation Standards
+
+### Required Updates Before Commit
+1. **CHANGELOG.md** - Document all changes with:
+   - Version following semantic versioning
+   - Changes categorized (Added, Changed, Fixed, etc.)
+   - Clear, concise descriptions
+
+2. **TASKS.md** - Update task status:
+   - Move completed items to ✅ section
+   - Update in-progress items
+   - Add new tasks as discovered
+
+### File Organization
+- Keep source code in `src/` directory
+- Use `public/` for static assets
+- Place documentation in `docs/` folder
+- Keep configuration files in root
+
+## 🐳 Docker Integration
+
+### Development Environment
+- Use `docker-compose up -d` for local development
+- Ensure Dockerfile follows multi-stage build pattern
+- Configure for Coolify deployment compatibility
+
+### Production Considerations
+- Optimize Docker images for production
+- Use `.dockerignore` to exclude unnecessary files
+- Follow security best practices for containers
+
+## 🔧 Code Quality Standards
+
+### General Principles
+- Write clean, readable code
+- Use meaningful variable and function names
+- Add comments for complex logic
+- Follow consistent formatting
+- Avoid code duplication
+
+### File Naming
+- Use kebab-case for files and folders
+- Be descriptive but concise
+- Follow language-specific conventions
+
+## 🤖 Cursor AI Behavior
+
+### Before Taking Action
+- **Always ask for permission** before:
+  - Committing changes
+  - Pushing to repository
+  - Creating or deleting branches
+  - Making significant file changes
+  - Running deployment commands
+
+### Error Handling
+- If encountering errors, explain clearly what went wrong
+- Suggest specific solutions
+- Don't make assumptions about user preferences
+- Ask for clarification when needed
+
+### Communication Style
+- Be clear and concise
+- Explain your reasoning
+- Confirm understanding before proceeding
+- Use bullet points for multiple items
+- Highlight important warnings or requirements
+
+## 🌐 Multi-Workstation Considerations
+
+### Environment Consistency
+- Ensure consistent Git configuration across workstations
+- Use environment variables for sensitive data
+- Document any workstation-specific setup requirements
+- Maintain consistent development environment through Docker
+
+### Configuration Management
+- Keep sensitive config out of version control
+- Use `.env.example` for environment variable templates
+- Document required environment variables
+- Ensure Docker setup works consistently across platforms
+
+## 🚨 Important Reminders
+
+1. **Never push directly to master branch** (except initial setup)
+2. **Always update CHANGELOG.md and TASKS.md** before commits
+3. **Ask permission** before committing/pushing
+4. **Verify correct directory** before git operations
+5. **Test code** before committing
+6. **Delete feature branches** after merging
+7. **Use semantic commit prefixes**
+8. **Consider staging environment** for testing
+
+## 🎯 Success Criteria
+
+A successful development session should:
+- Follow the git workflow strictly
+- Update all required documentation
+- Test changes appropriately
+- Get proper permissions before actions
+- Leave the codebase in a clean state
+- Maintain clear commit history
+- Follow coding standards consistently

@@ -1,0 +1,132 @@
+# Dependencies
+node_modules/
+vendor/
+bower_components/
+
+# Build outputs
+build/
+dist/
+out/
+public/
+.next/
+.nuxt/
+.output/
+.vercel/
+.netlify/
+
+# Cache directories
+.cache/
+.temp/
+.tmp/
+*.tmp
+.parcel-cache/
+
+# Environment files
+.env*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE and editor files (keep project settings visible)
+# .vscode/ - commented out to allow project settings
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Documentation build
+docs/build/
+docs/_build/
+
+# Compiled files
+*.min.js
+*.min.css
+
+# Source maps
+*.map
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Docker
+Dockerfile.prod
+docker-compose.prod.yml
+
+# Backup files
+*.backup
+*.bak
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.mp3
+*.wav
+*.flac
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Certificate files
+*.pem
+*.key
+*.crt
+*.p12
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Git files
+.git/
+.gitmodules
+
+# CI/CD (keep GitHub workflows visible)
+# .github/ - commented out to allow workflow visibility
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Sentry
+.sentryclirc
+
+# Stylelint
+.stylelintcache
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettiercache 

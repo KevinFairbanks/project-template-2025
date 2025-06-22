@@ -1,0 +1,41 @@
+{
+  "recommendations": [
+    // Essential formatting and linting
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+
+    // Git integration
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+
+    // Docker support
+    "ms-azuretools.vscode-docker",
+
+    // Language support
+    "ms-vscode.vscode-typescript-next",
+    "ms-vscode.vscode-json",
+
+    // Testing
+    "orta.vscode-jest",
+
+    // Markdown support
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-mermaid",
+
+    // Productivity
+    "ms-vscode.vscode-todo-highlight",
+    "gruntfuggly.todo-tree",
+    "streetsidesoftware.code-spell-checker",
+
+    // File management
+    "redhat.vscode-yaml",
+    "mikestead.dotenv",
+
+    // Code visualization
+    "bradlc.vscode-tailwindcss"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript",
+    "hookyqr.beautify"
+  ]
+}

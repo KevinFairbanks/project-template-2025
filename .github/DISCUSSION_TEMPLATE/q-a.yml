@@ -1,0 +1,56 @@
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for asking a question! Please provide as much detail as possible.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: "❓ Question"
+      description: "What would you like to know?"
+      placeholder: "Ask your question here..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: "📋 Context"
+      description: "Provide any relevant context or background information"
+      placeholder: "Share relevant details..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: attempted-solutions
+    attributes:
+      label: "🔍 What I've Tried"
+      description: "What have you already tried to solve this?"
+      placeholder: "Describe your attempts..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "⏰ Urgency"
+      description: "How urgent is this question?"
+      options:
+        - "Low - Just curious"
+        - "Medium - Would help with current work"
+        - "High - Blocking current work"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "📋 Checklist"
+      description: "Please confirm the following:"
+      options:
+        - label: "I have searched existing discussions and issues"
+          required: true
+        - label: "I have checked the documentation"
+          required: true

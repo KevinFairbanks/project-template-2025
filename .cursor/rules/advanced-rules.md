@@ -1,0 +1,184 @@
+# Advanced Cursor AI Rules
+
+## 🧠 Memory Management
+
+### Project Context Awareness
+- **Always reference** `.cursor/memories/project-context.md` for architectural decisions
+- **Update memories** when making significant technical decisions
+- **Maintain consistency** with established patterns and conventions
+- **Document reasoning** for major architectural changes
+
+### Cross-Session Continuity
+- **Remember** user preferences from previous sessions
+- **Maintain** coding style consistency across sessions
+- **Track** ongoing feature development and technical debt
+- **Reference** previous discussions and decisions
+
+## 📊 Advanced Documentation Automation
+
+### Intelligent CHANGELOG.md Updates
+- **Categorize changes** automatically based on commit patterns:
+  - `feat:` → Added section
+  - `fix:` → Fixed section
+  - `docs:` → Changed section
+  - `refactor:` → Changed section
+  - `test:` → Added section (if new test coverage)
+  - `chore:` → Internal section (optional)
+
+### Smart TASKS.md Management
+- **Auto-detect** completed tasks from commit messages
+- **Move tasks** between sections based on progress indicators
+- **Suggest new tasks** based on TODO comments in code
+- **Link tasks** to related issues and PRs
+
+### Code Documentation
+- **Generate JSDoc** comments for new functions
+- **Update README.md** when adding new features or changing setup
+- **Maintain API documentation** when endpoints change
+- **Create inline comments** for complex business logic
+
+## 🔍 Code Quality Enhancement
+
+### Proactive Code Review
+- **Suggest improvements** before committing
+- **Identify potential bugs** in new code
+- **Recommend refactoring** for code duplication
+- **Ensure consistency** with project conventions
+
+### Security Awareness
+- **Flag potential security issues** (SQL injection, XSS, etc.)
+- **Suggest secure alternatives** for risky patterns
+- **Validate input sanitization** in new endpoints
+- **Check for exposed sensitive data**
+
+### Performance Optimization
+- **Identify performance bottlenecks** in new code
+- **Suggest caching strategies** where appropriate
+- **Recommend database query optimizations**
+- **Flag potential memory leaks**
+
+## 🚀 Development Workflow Enhancement
+
+### Intelligent Branch Management
+- **Suggest branch names** based on task description
+- **Recommend when to create** feature branches
+- **Identify when branches** are ready for merging
+- **Suggest cleanup** of stale branches
+
+### Testing Automation
+- **Generate test cases** for new functions
+- **Suggest test scenarios** based on business logic
+- **Identify untested code paths**
+- **Recommend integration tests** for new features
+
+### Deployment Readiness
+- **Check environment variables** are documented
+- **Verify health check endpoints** are functional
+- **Ensure Docker configuration** is optimized
+- **Validate database migration** scripts
+
+## 🤝 Collaboration Features
+
+### PR Preparation
+- **Generate comprehensive PR descriptions**
+- **Include testing instructions**
+- **Link related issues and tasks**
+- **Suggest reviewers** based on code changes
+
+### Issue Management
+- **Auto-link commits** to related issues
+- **Suggest issue labels** based on content
+- **Recommend issue closure** when tasks complete
+- **Create follow-up issues** for discovered technical debt
+
+## 🔧 Environment-Specific Rules
+
+### Development Environment
+- **Use detailed logging** for debugging
+- **Include development helpers** and debugging tools
+- **Allow experimental features** and rapid prototyping
+- **Prioritize developer experience**
+
+### Staging Environment
+- **Mirror production configuration** as closely as possible
+- **Include monitoring and logging**
+- **Test deployment procedures**
+- **Validate performance under load**
+
+### Production Environment
+- **Prioritize stability** and performance
+- **Minimize logging verbosity**
+- **Ensure graceful error handling**
+- **Implement comprehensive monitoring**
+
+## 📱 Multi-Platform Considerations
+
+### Cross-Platform Compatibility
+- **Test on multiple operating systems** when relevant
+- **Consider mobile responsiveness** for web applications
+- **Ensure Docker compatibility** across platforms
+- **Document platform-specific requirements**
+
+### Multi-Workstation Sync
+- **Maintain consistent development environments**
+- **Document workstation-specific setup**
+- **Ensure version control** includes all necessary files
+- **Test setup procedures** on fresh installations
+
+## 🎯 Project-Specific Intelligence
+
+### Business Logic Awareness
+- **Understand domain-specific requirements**
+- **Maintain business rule consistency**
+- **Suggest improvements** based on user feedback
+- **Identify opportunities** for feature enhancement
+
+### Technical Debt Management
+- **Track accumulating technical debt**
+- **Suggest refactoring opportunities**
+- **Prioritize debt reduction** based on impact
+- **Document architectural decisions** for future reference
+
+## 🚨 Error Prevention
+
+### Common Mistake Prevention
+- **Prevent direct commits** to master branch
+- **Validate commit message** format before committing
+- **Check for sensitive data** before commits
+- **Ensure tests pass** before allowing pushes
+
+### Dependency Management
+- **Alert on security vulnerabilities** in dependencies
+- **Suggest dependency updates** when appropriate
+- **Check for breaking changes** in updates
+- **Maintain dependency documentation**
+
+## 📈 Continuous Improvement
+
+### Learning from Patterns
+- **Analyze successful implementations** for reuse
+- **Identify recurring issues** for systematic solutions
+- **Suggest process improvements** based on experience
+- **Adapt rules** based on project evolution
+
+### Metrics and Insights
+- **Track development velocity** and patterns
+- **Identify bottlenecks** in the development process
+- **Suggest workflow optimizations**
+- **Monitor code quality trends**
+
+## 🎨 User Experience Focus
+
+### Accessibility Considerations
+- **Ensure semantic HTML** structure
+- **Check color contrast** ratios
+- **Validate keyboard navigation**
+- **Include ARIA labels** where appropriate
+
+### Performance User Experience
+- **Optimize loading times** for user-facing features
+- **Implement progressive loading** strategies
+- **Minimize bundle sizes** for web applications
+- **Consider offline functionality** where relevant
+
+These advanced rules work in conjunction with the base project rules to provide comprehensive AI-assisted development support.

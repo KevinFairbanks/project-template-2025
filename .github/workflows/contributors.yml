@@ -1,0 +1,62 @@
+name: Update Contributors
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    # Run weekly on Sundays at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Generate contributors list
+      uses: akhilmhdh/contributors-readme-action@v2.3.6
+      with:
+        file: 'README.md'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        committer_username: 'github-actions[bot]'
+        committer_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'docs: update contributors list [skip ci]'
+        max_contributors: 50
+        use_username: true
+        pr_title_template: 'docs: update contributors list'
+        pr_body_template: |
+          Automated update of contributors list.
+
+          This PR updates the contributors section in README.md based on recent commits.
+
+    - name: Update CHANGELOG if contributors changed
+      run: |
+        if git diff --quiet HEAD~1 README.md; then
+          echo "No contributors changes detected"
+        else
+          echo "Contributors updated, adding to changelog"
+          DATE=$(date +%Y-%m-%d)
+          sed -i "/## \[Unreleased\]/a\\
+          \\
+          ### Changed\\
+          - Updated contributors list ($DATE)" CHANGELOG.md
+        fi
+
+    - name: Commit changelog updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        if ! git diff --quiet CHANGELOG.md; then
+          git add CHANGELOG.md
+          git commit -m "docs: update changelog for contributors [skip ci]"
+          git push
+        fi

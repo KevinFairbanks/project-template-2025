@@ -1,0 +1,113 @@
+name: Project Board Automation
+
+on:
+  issues:
+    types: [opened, closed, reopened]
+  pull_request:
+    types: [opened, closed, merged, ready_for_review, converted_to_draft]
+  project_card:
+    types: [moved]
+
+jobs:
+  manage-project-board:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add new issues to project board
+      if: github.event_name == 'issues' && github.event.action == 'opened'
+      uses: alex-page/github-project-automation-plus@v0.8.3
+      with:
+        project: Project Strategy Board
+        column: 📋 Backlog
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Move issue to in progress when PR opened
+      if: github.event_name == 'pull_request' && github.event.action == 'opened'
+      uses: alex-page/github-project-automation-plus@v0.8.3
+      with:
+        project: Project Strategy Board
+        column: 🚧 In Progress
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Move to review when PR ready
+      if: github.event_name == 'pull_request' && github.event.action == 'ready_for_review'
+      uses: alex-page/github-project-automation-plus@v0.8.3
+      with:
+        project: Project Strategy Board
+        column: 👀 In Review
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Move to done when issue closed
+      if: github.event_name == 'issues' && github.event.action == 'closed'
+      uses: alex-page/github-project-automation-plus@v0.8.3
+      with:
+        project: Project Strategy Board
+        column: ✅ Done
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Move to done when PR merged
+      if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+      uses: alex-page/github-project-automation-plus@v0.8.3
+      with:
+        project: Project Strategy Board
+        column: ✅ Done
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+  update-changelog:
+    if: github.event_name == 'issues' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Update CHANGELOG
+      run: |
+        # Extract issue information
+        ISSUE_NUMBER="${{ github.event.issue.number }}"
+        ISSUE_TITLE="${{ github.event.issue.title }}"
+        ISSUE_LABELS="${{ join(github.event.issue.labels.*.name, ', ') }}"
+
+        # Determine changelog section based on labels
+        if [[ "$ISSUE_LABELS" == *"bug"* ]]; then
+          SECTION="Fixed"
+        elif [[ "$ISSUE_LABELS" == *"enhancement"* ]]; then
+          SECTION="Added"
+        elif [[ "$ISSUE_LABELS" == *"documentation"* ]]; then
+          SECTION="Changed"
+        else
+          SECTION="Changed"
+        fi
+
+        # Add entry to changelog
+        DATE=$(date +%Y-%m-%d)
+        sed -i "/## \[Unreleased\]/a\\
+        \\
+        ### $SECTION\\
+        - $ISSUE_TITLE (#$ISSUE_NUMBER)" CHANGELOG.md
+
+    - name: Update TASKS.md
+      run: |
+        ISSUE_TITLE="${{ github.event.issue.title }}"
+        ISSUE_NUMBER="${{ github.event.issue.number }}"
+
+        # Move task from current to completed
+        if grep -q "$ISSUE_TITLE" TASKS.md; then
+          # Remove from current tasks
+          sed -i "/$ISSUE_TITLE/d" TASKS.md
+
+          # Add to completed tasks
+          sed -i "/## ✅ Completed Tasks/a\\
+          - ✅ $ISSUE_TITLE (#$ISSUE_NUMBER) - $(date +%Y-%m-%d)" TASKS.md
+        fi
+
+    - name: Commit updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+        if ! git diff --quiet CHANGELOG.md TASKS.md; then
+          git add CHANGELOG.md TASKS.md
+          git commit -m "docs: update changelog and tasks for issue #${{ github.event.issue.number }} [skip ci]"
+          git push
+        fi
