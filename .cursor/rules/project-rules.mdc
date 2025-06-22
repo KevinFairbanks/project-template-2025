@@ -1,3 +1,9 @@
+---
+description: Core project development rules covering git workflow and documentation standards
+globs:
+alwaysApply: false
+---
+
 # Project Rules for Cursor AI
 
 These rules define the standards and workflows for this project. Follow these guidelines for all development work.

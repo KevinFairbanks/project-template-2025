@@ -1,3 +1,13 @@
+---
+description: Advanced AI rules for code quality, workflow optimization, and intelligent development assistance
+globs:
+  - "**/*.js"
+  - "**/*.ts"
+  - "**/*.jsx"
+  - "**/*.tsx"
+  - "**/*.md"
+alwaysApply: true
+---
 # Advanced Cursor AI Rules
 
 ## 🧠 Memory Management
